@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Dashboard - Feuille de présence</title>
+    <link rel='stylesheet' href='/presence/stylesheets/style.css' />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+  </head>
+  <body>
+
+      <nav class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0">
+        <a class="navbar-brand col-sm-3 col-md-2 mr-0" href="#">Feuille de présence</a>
+        <ul class="navbar-nav px-3">
+          <li class="nav-item text-nowrap">
+            <a class="nav-link" href="/">Déconnecter</a>
+          </li>
+        </ul>
+      </nav>
+  
+      <div class="container-fluid">
+        <div class="row">
+          <nav class="col-md-2 d-none d-md-block bg-light sidebar">
+            <div class="sidebar-sticky">
+              <ul class="nav flex-column">
+                <li class="nav-item">
+                  <a class="nav-link active" href="/dashboard/">
+                    <span data-feather="home"></span>
+                    Générer/Synchro PDF 
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link active" href="/ajouter/">
+                    <span data-feather="home"></span>
+                    Ajouter une formation <span class="sr-only">(current)</span>
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </nav>
+  
+          <main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
+            <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-3 border-bottom">
+              <h1>Ajouter une formation</h1>
+            </div>
+            <form action="/ajouterFormation" method="POST">
+              <div class="form-group">
+                <label for="exampleInputID1">ID du google sheet</label>
+                <input type="text" class="form-control" id="exampleInputID1" placeholder="ID" name="id">
+              </div>
+              <div class="form-group">
+                <label for="exampleFormControlSelect1">Organisme</label>
+                <select class="form-control" id="exampleFormControlSelect1" name="organisme">
+                  <%  organisme.forEach(element => { %>
+                   <option><%= element.nom %></option>
+                  <% }) %>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="exampleFormControlSelect1">Formation</label>
+                <input type="text" class="form-control" id="exampleInputFormation1" placeholder="Nom de la formation" name="formation">
+              </div>
+              <button type="submit" class="btn btn-primary">Ajouter</button>
+            </form>
+              
+          </main>
+        </div>
+      </div>
+    
+  </body>
+</html>

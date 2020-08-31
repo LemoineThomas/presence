@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Feuille de présence</title>
+    <link rel='stylesheet' href='/presence/stylesheets/style.css' />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+</head>
+<body class="container">
+
+<main>
+    <div class="jumbotron">
+        <form action="/login" method="POST" class="form">
+
+            <div class="form-group">
+                <label>Mail</label>
+                <input type="mail" name="email" class="form-control" required>
+            </div>
+        
+            
+            <div class="form-group">
+                <label>Mot de passe</label>
+                <input type="password" name="password" class="form-control" required>
+            </div>
+            
+
+            <div class="col-sm-12 text-center mt-5">
+                <input type="submit" value="se connecter" class="btn btn-primary">
+            </div>
+
+        </form>
+
+      <div class="col-sm-12 text-center mt-5">
+            <a href="/inscription">S'inscrire</a>
+      </div>
+  
+    </div>
+</main>
+
+</body>
+</html>

@@ -41,36 +41,66 @@
             </div>
             <form action="/signer" method="POST">
               <div class="btn-group btn-group-toggle" data-toggle="buttons">
+                <% if(today.getDay() == 1 || today.getDay() == 0) { %>
+                  <% if(today.getHours() < 12 && today.getHours() > 8) { %>
                 <label class="btn btn-primary active">
                   <input type="checkbox" name="options" autocomplete="off"> Lundi Matin
                 </label>
+                <% } %>
+                <% if(today.getHours() > 13 &&  today.getHours() < 16) { %>
                 <label class="btn btn-primary">
                   <input type="checkbox" name="options" autocomplete="off"> Lundi Aprem
                 </label>
+                <% } %>
+                <% } %>
+                <% if(today.getDay() == 2 || today.getDay() == 0) { %>
+                  <% if(today.getHours() < 12 && today.getHours() > 8) { %>
                 <label class="btn btn-primary active">
                   <input type="checkbox" name="options" autocomplete="off"> Mardi Matin
                 </label>
+                <% } %>
+                <% if(today.getHours() > 13 &&  today.getHours() < 16) { %></16>
                 <label class="btn btn-primary active">
                   <input type="checkbox" name="options" autocomplete="off"> Mardi Aprem
                 </label>
+                <% } %>
+                <% } %>
+                <% if(today.getDay() == 3 || today.getDay() == 0) { %>
+                  <% if(today.getHours() < 12 && today.getHours() > 8) { %>
                 <label class="btn btn-primary">
                   <input type="checkbox" name="options" autocomplete="off"> Mercredi Matin
                 </label>
+                <% } %>
+                <% if(today.getHours() > 13 &&  today.getHours() < 16) { %></16>
                 <label class="btn btn-primary active">
                   <input type="checkbox" name="options" autocomplete="off"> Mercredi Aprem
                 </label>
+                <% } %>
+                <% } %>
+                <% if(today.getDay() == 4 || today.getDay() == 0) { %>
+                  <% if(today.getHours() < 12 && today.getHours() > 8) { %>
                 <label class="btn btn-primary active">
                   <input type="checkbox" name="options" autocomplete="off"> Jeudi Matin
                 </label>
+                <% } %>
+                <% if(today.getHours() > 13 &&  today.getHours() < 16) { %></16>
                 <label class="btn btn-primary active">
                   <input type="checkbox" name="options" autocomplete="off"> Jeudi Aprem
                 </label>
+                <% } %>
+                <% } %>
+                <% if(today.getDay() == 5 || today.getDay() == 0) { %>
+                  <% if(today.getHours() < 12 && today.getHours() > 8) { %>
                 <label class="btn btn-primary">
                   <input type="checkbox" name="options" autocomplete="off"> Vendredi Matin
                 </label>
+                <% } %>
+                <% if(today.getHours() > 13 &&  today.getHours() < 16) { %></16>
                 <label class="btn btn-primary active">
                   <input type="checkbox" name="options" autocomplete="off"> Vendredi Aprem
                 </label>
+                <% } %>
+                <% } %>
               </div>
               <button type="submit" class="btn btn-primary">Signer</button>
             </form>

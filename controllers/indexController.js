@@ -81,11 +81,13 @@ controller.index = async (req, res) => {
   }else{
     var signatures = signer[0].id_formations.contenu.apprenants[0]
     console.log(signatures)
+    var today = new Date();
     res.render('./dashboard.ejs', {
       title: "dashboard",
       organisme : organisme,
       formation : formation,
-      signatures: signatures
+      signatures: signatures,
+      today: today
     })
   }
   

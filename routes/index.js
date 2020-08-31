@@ -19,5 +19,6 @@ router.post('/addUser', indexController.addUser);
 router.get('/ajouter', indexController.ajouter);
 router.post('/ajouterFormation', indexController.ajouterFormation);
 router.post('/synchro', indexController.synchro);
+router.post('/signer', indexController.signer);
 
 module.exports = router;

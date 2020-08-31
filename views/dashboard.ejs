@@ -49,7 +49,7 @@
                       <input type="checkbox" name="options" autocomplete="off" value="lundi-matin"> Lundi Matin
                     </label>
                   <% } %>
-                  <% if(today.getHours() > 13 &&  today.getHours() < 16) { %>
+                  <% if(today.getHours() >= 13 &&  today.getHours() < 16) { %>
                     <label class="btn btn-primary">
                       <input type="checkbox" name="options" autocomplete="off" value="lundi-aprem"> Lundi Aprem
                     </label>
@@ -61,7 +61,7 @@
                       <input type="checkbox" name="options" autocomplete="off" value="mardi-matin"> Mardi Matin
                     </label>
                   <% } %>
-                  <% if(today.getHours() > 13 &&  today.getHours() < 16) { %>
+                  <% if(today.getHours() >= 13 &&  today.getHours() < 16) { %>
                     <label class="btn btn-primary active">
                       <input type="checkbox" name="options" autocomplete="off" value="mardi-aprem"> Mardi Aprem
                     </label>
@@ -73,7 +73,7 @@
                       <input type="checkbox" name="options" autocomplete="off" value="mercredi-matin"> Mercredi Matin
                     </label>
                   <% } %>
-                  <% if(today.getHours() > 13 &&  today.getHours() < 16) { %>
+                  <% if(today.getHours() >= 13 &&  today.getHours() < 16) { %>
                     <label class="btn btn-primary active">
                       <input type="checkbox" name="options" autocomplete="off" value="mercredi-aprem"> Mercredi Aprem
                     </label>
@@ -85,7 +85,7 @@
                       <input type="checkbox" name="options" autocomplete="off" value="jeudi-matin"> Jeudi Matin
                     </label>
                   <% } %>
-                  <% if(today.getHours() > 13 &&  today.getHours() < 16) { %>
+                  <% if(today.getHours() >= 13 &&  today.getHours() < 16) { %>
                     <label class="btn btn-primary active">
                       <input type="checkbox" name="options" autocomplete="off" value="jeudi-aprem"> Jeudi Aprem
                     </label>
@@ -97,7 +97,7 @@
                       <input type="checkbox" name="options" autocomplete="off" value="vendredi-matin"> Vendredi Matin
                     </label>
                   <% } %>
-                  <% if(today.getHours() > 13 &&  today.getHours() < 16) { %>
+                  <% if(today.getHours() >= 13 &&  today.getHours() < 16) { %>
                     <label class="btn btn-primary active">
                       <input type="checkbox" name="options" autocomplete="off" value="vendredi-aprem"> Vendredi Aprem
                     </label>
@@ -124,7 +124,7 @@
                       <option value="black" selected="selected">black</option>
                   </select>
                 </div>
-                <button type="submit" class="btn btn-primary mt-4">Signer</button>
+                <button type="submit" class="btn btn-primary mt-4" onclick="sendSignature()">Signer</button>
               </div>
             </div>
           </div>
@@ -177,6 +177,20 @@
             // Use the identity matrix while clearing the canvas
             ctx.setTransform(1, 0, 0, 1, 0, 0);
             ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height);
+        }
+
+        function sendSignature(){
+          var canvas = document.getElementById('myCanvas');
+          var dataURL = canvas.toDataURL();
+
+          var _data = {};
+          // set test property:
+          _data.signature = dataURL;
+          console.log(_data);
+          // Make an Ajax request
+          $.post('/signer', _data, function(result) {
+            console.log('result', result);
+          });
         }
       </script>
   </body>

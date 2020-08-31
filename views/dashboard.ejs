@@ -9,7 +9,9 @@
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
   </head>
-  <body>
+  <body onload="InitThis();">
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
+    <script type="text/javascript" src="JsCode.js"></script>
 
       <nav class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0">
         <a class="navbar-brand col-sm-3 col-md-2 mr-0" href="#">Feuille de présence</a>
@@ -43,71 +45,139 @@
               <div class="btn-group btn-group-toggle" data-toggle="buttons">
                 <% if(today.getDay() == 1 || today.getDay() == 0) { %>
                   <% if(today.getHours() < 12 && today.getHours() > 8) { %>
-                <label class="btn btn-primary active">
-                  <input type="checkbox" name="options" autocomplete="off"> Lundi Matin
-                </label>
-                <% } %>
-                <% if(today.getHours() > 13 &&  today.getHours() < 16) { %>
-                <label class="btn btn-primary">
-                  <input type="checkbox" name="options" autocomplete="off"> Lundi Aprem
-                </label>
-                <% } %>
+                    <label class="btn btn-primary active">
+                      <input type="checkbox" name="options" autocomplete="off" value="lundi-matin"> Lundi Matin
+                    </label>
+                  <% } %>
+                  <% if(today.getHours() > 13 &&  today.getHours() < 16) { %>
+                    <label class="btn btn-primary">
+                      <input type="checkbox" name="options" autocomplete="off" value="lundi-aprem"> Lundi Aprem
+                    </label>
+                  <% } %>
                 <% } %>
                 <% if(today.getDay() == 2 || today.getDay() == 0) { %>
                   <% if(today.getHours() < 12 && today.getHours() > 8) { %>
-                <label class="btn btn-primary active">
-                  <input type="checkbox" name="options" autocomplete="off"> Mardi Matin
-                </label>
-                <% } %>
-                <% if(today.getHours() > 13 &&  today.getHours() < 16) { %></16>
-                <label class="btn btn-primary active">
-                  <input type="checkbox" name="options" autocomplete="off"> Mardi Aprem
-                </label>
-                <% } %>
+                    <label class="btn btn-primary active">
+                      <input type="checkbox" name="options" autocomplete="off" value="mardi-matin"> Mardi Matin
+                    </label>
+                  <% } %>
+                  <% if(today.getHours() > 13 &&  today.getHours() < 16) { %>
+                    <label class="btn btn-primary active">
+                      <input type="checkbox" name="options" autocomplete="off" value="mardi-aprem"> Mardi Aprem
+                    </label>
+                  <% } %>
                 <% } %>
                 <% if(today.getDay() == 3 || today.getDay() == 0) { %>
                   <% if(today.getHours() < 12 && today.getHours() > 8) { %>
-                <label class="btn btn-primary">
-                  <input type="checkbox" name="options" autocomplete="off"> Mercredi Matin
-                </label>
-                <% } %>
-                <% if(today.getHours() > 13 &&  today.getHours() < 16) { %></16>
-                <label class="btn btn-primary active">
-                  <input type="checkbox" name="options" autocomplete="off"> Mercredi Aprem
-                </label>
-                <% } %>
+                    <label class="btn btn-primary">
+                      <input type="checkbox" name="options" autocomplete="off" value="mercredi-matin"> Mercredi Matin
+                    </label>
+                  <% } %>
+                  <% if(today.getHours() > 13 &&  today.getHours() < 16) { %>
+                    <label class="btn btn-primary active">
+                      <input type="checkbox" name="options" autocomplete="off" value="mercredi-aprem"> Mercredi Aprem
+                    </label>
+                  <% } %>
                 <% } %>
                 <% if(today.getDay() == 4 || today.getDay() == 0) { %>
                   <% if(today.getHours() < 12 && today.getHours() > 8) { %>
-                <label class="btn btn-primary active">
-                  <input type="checkbox" name="options" autocomplete="off"> Jeudi Matin
-                </label>
-                <% } %>
-                <% if(today.getHours() > 13 &&  today.getHours() < 16) { %></16>
-                <label class="btn btn-primary active">
-                  <input type="checkbox" name="options" autocomplete="off"> Jeudi Aprem
-                </label>
-                <% } %>
+                    <label class="btn btn-primary active">
+                      <input type="checkbox" name="options" autocomplete="off" value="jeudi-matin"> Jeudi Matin
+                    </label>
+                  <% } %>
+                  <% if(today.getHours() > 13 &&  today.getHours() < 16) { %>
+                    <label class="btn btn-primary active">
+                      <input type="checkbox" name="options" autocomplete="off" value="jeudi-aprem"> Jeudi Aprem
+                    </label>
+                  <% } %>
                 <% } %>
                 <% if(today.getDay() == 5 || today.getDay() == 0) { %>
                   <% if(today.getHours() < 12 && today.getHours() > 8) { %>
-                <label class="btn btn-primary">
-                  <input type="checkbox" name="options" autocomplete="off"> Vendredi Matin
-                </label>
-                <% } %>
-                <% if(today.getHours() > 13 &&  today.getHours() < 16) { %></16>
-                <label class="btn btn-primary active">
-                  <input type="checkbox" name="options" autocomplete="off"> Vendredi Aprem
-                </label>
-                <% } %>
+                    <label class="btn btn-primary">
+                      <input type="checkbox" name="options" autocomplete="off" value="vendredi-matin"> Vendredi Matin
+                    </label>
+                  <% } %>
+                  <% if(today.getHours() > 13 &&  today.getHours() < 16) { %>
+                    <label class="btn btn-primary active">
+                      <input type="checkbox" name="options" autocomplete="off" value="vendredi-aprem"> Vendredi Aprem
+                    </label>
+                  <% } %>
                 <% } %>
               </div>
               <button type="submit" class="btn btn-primary">Signer</button>
             </form>
-              
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-lg">Large modal</button>
+
+          <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-lg">
+              <div class="modal-content">
+                <div align="center" class="mt-4">
+                  <canvas id="myCanvas" width="500" height="200" style="border:2px solid black"></canvas>
+                  <br /><br />
+                  <button class="btn btn-primary" onclick="javascript:clearArea();return false;">Tout effacer</button>
+                  Épaisseur : <select id="selWidth">
+                      <option value="1">1</option>
+                      <option value="3" selected="selected">3</option>
+                      <option value="5">5</option>
+                  </select>
+                  Couleur : <select id="selColor">
+                      <option value="black" selected="selected">black</option>
+                  </select>
+                </div>
+                <button type="submit" class="btn btn-primary mt-4">Signer</button>
+              </div>
+            </div>
+          </div>
           </main>
         </div>
       </div>
     
+      <script>
+        var mousePressed = false;
+        var lastX, lastY;
+        var ctx;
+        
+        function InitThis() {
+            ctx = document.getElementById('myCanvas').getContext("2d");
+        
+            $('#myCanvas').mousedown(function (e) {
+                mousePressed = true;
+                Draw(e.pageX - $(this).offset().left, e.pageY - $(this).offset().top, false);
+            });
+        
+            $('#myCanvas').mousemove(function (e) {
+                if (mousePressed) {
+                    Draw(e.pageX - $(this).offset().left, e.pageY - $(this).offset().top, true);
+                }
+            });
+        
+            $('#myCanvas').mouseup(function (e) {
+                mousePressed = false;
+            });
+              $('#myCanvas').mouseleave(function (e) {
+                mousePressed = false;
+            });
+        }
+        
+        function Draw(x, y, isDown) {
+            if (isDown) {
+                ctx.beginPath();
+                ctx.strokeStyle = $('#selColor').val();
+                ctx.lineWidth = $('#selWidth').val();
+                ctx.lineJoin = "round";
+                ctx.moveTo(lastX, lastY);
+                ctx.lineTo(x, y);
+                ctx.closePath();
+                ctx.stroke();
+            }
+            lastX = x; lastY = y;
+        }
+          
+        function clearArea() {
+            // Use the identity matrix while clearing the canvas
+            ctx.setTransform(1, 0, 0, 1, 0, 0);
+            ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height);
+        }
+      </script>
   </body>
 </html>

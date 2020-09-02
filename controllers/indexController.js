@@ -551,8 +551,8 @@ controller.createLinkApprenant = async (req, res) => {
   var jour = req.body.jours.replace(' ', '-')
   console.log(req.body)
   link = "http://" + "localhost:3000/" + "signature" + "?apprenant=" + apprenant + "&jour=" + jour
-  var posApprenant = findWithAttr(Object.values(formations[0].contenu.apprenants), 'nom', '"LEMOINE Thomas"');
-  var posJour = findWithAttr(Object.values(formations[0].contenu.apprenants[posApprenant].liens), 'nom', 'lundiAprem');
+  var posApprenant = findWithAttr(Object.values(formations[0].contenu.apprenants), 'nom', req.body.apprenants);
+  var posJour = findWithAttr(Object.values(formations[0].contenu.apprenants[posApprenant].liens), 'nom', req.body.jours);
   formations[0].contenu.apprenants[posApprenant].liens[posJour].lien = link
   formations[0].contenu.apprenants[posApprenant].liens[posJour].created = Date.now()
   await Formations.updateOne({nom: formations[0].nom},{ contenu: formations[0].contenu})

@@ -97,34 +97,34 @@
             htm = '<label for="exampleFormControlSelect1">Jour</label>'
             htm += '<select class="form-control" id="jours" name="jours">'
             if(formations[0].contenu.apprenants[posApprenant].lundiMatin == ""){
-              htm += '<option>Lundi Matin</option>'
+              htm += '<option value="lundiMatin">Lundi Matin</option>'
             }
             if(formations[0].contenu.apprenants[posApprenant].lundiAprem == ""){
-              htm += '<option>Lundi Aprem</option>'
+              htm += '<option value="lundiAprem">Lundi Aprem</option>'
             }
             if(formations[0].contenu.apprenants[posApprenant].mardiMatin == ""){
-              htm += '<option>Mardi Matin</option>'
+              htm += '<option value="mardiMatin">Mardi Matin</option>'
             }
             if(formations[0].contenu.apprenants[posApprenant].mardiAprem == ""){
-              htm += '<option>Mardi Aprem</option>'
+              htm += '<option value="mardiAprem">Mardi Aprem</option>'
             }
             if(formations[0].contenu.apprenants[posApprenant].mercrediMatin == ""){
-              htm += '<option>Mercredi Matin</option>'
+              htm += '<option value="mercrediMatin">Mercredi Matin</option>'
             }
             if(formations[0].contenu.apprenants[posApprenant].mercrediAprem == ""){
-              htm += '<option>Mercredi Aprem</option>'
+              htm += '<option value="mercrediAprem">Mercredi Aprem</option>'
             }
             if(formations[0].contenu.apprenants[posApprenant].jeudiMatin == ""){
-              htm += '<option>Jeudi Matin</option>'
+              htm += '<option value="jeudiMatin">Jeudi Matin</option>'
             }
             if(formations[0].contenu.apprenants[posApprenant].jeudiAprem == ""){
-              htm += '<option>Jeudi Aprem</option>'
+              htm += '<option value="jeudiAprem">Jeudi Aprem</option>'
             }
             if(formations[0].contenu.apprenants[posApprenant].vendrediMatin == ""){
-              htm += '<option>Vendredi Matin</option>'
+              htm += '<option value="vendrediMatin">Vendredi Matin</option>'
             }
             if(formations[0].contenu.apprenants[posApprenant].vendrediAprem == ""){
-              htm += '<option>Vendredi Aprem</option>'
+              htm += '<option value="vendrediAprem">Vendredi Aprem</option>'
             }
             htm += '</select>'
             document.getElementById("jour").innerHTML = htm

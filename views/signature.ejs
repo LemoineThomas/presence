@@ -41,50 +41,8 @@
             <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-3 border-bottom">
               <h1>Signer le PDF</h1>
             </div>
-                <% if(today.getDay() == 1 || today.getDay() == 0) { %>
-                  <% if(today.getHours() < 12 && today.getHours() >= 8) { %>
-                    <button id="jour" value="lundiM" type="button" class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-lg">Lundi Matin</button>
-                  <% } %>
-                  <% if(today.getHours() >= 13 &&  today.getHours() < 16) { %>
-                    <button id="jour" value="lundiA" type="button" class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-lg">Lundi Aprem</button>
-                  <% } %>
-                <% } %>
-                <% if(today.getDay() == 2 || today.getDay() == 0) { %>
-                  <% if(today.getHours() < 12 && today.getHours() >= 8) { %>
-                    <button id="jour" value="mardiM" type="button" class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-lg">Mardi Matin</button>
-                  <% } %>
-                  <% if(today.getHours() >= 13 &&  today.getHours() < 16) { %>
-                    <button id="jour" value="mardiA" type="button" class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-lg">Mardi Aprem</button>
-                  <% } %>
-                <% } %>
-                <% if(today.getDay() == 3 || today.getDay() == 0) { %>
-                  <% if(today.getHours() < 12 && today.getHours() >= 8) { %>
-                    <button id="jour" value="mercrediM" type="button" class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-lg">Mercredi Matin</button>
-                  <% } %>
-                  <% if(today.getHours() >= 13 &&  today.getHours() < 16) { %>
-                    <button id="jour" value="mercrediA" type="button" class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-lg">Mercredi Aprem</button>
-                  <% } %>
-                <% } %>
-                <% if(today.getDay() == 4 || today.getDay() == 0) { %>
-                  <% if(today.getHours() < 12 && today.getHours() >= 8) { %>
-                    <button id="jour" value="jeudiM" type="button" class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-lg">Jeudi Matin</button>
-                  <% } %>
-                  <% if(today.getHours() >= 13 &&  today.getHours() < 16) { %>
-                    <button id="jour" value="jeudiA" type="button" class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-lg">Jeudi Aprem</button>
-                  <% } %>
-                <% } %>
-                <% if(today.getDay() == 5 || today.getDay() == 0) { %>
-                  <% if(today.getHours() < 12 && today.getHours() >= 8) { %>
-                    <button id="jour" value="vendrediM" type="button" class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-lg">Vendredi Matin</button>
-                  <% } %>
-                  <% if(today.getHours() >= 13 &&  today.getHours() < 16) { %>
-                    <button id="jour" value="vendrediA" type="button" class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-lg">Vendredi Aprem</button>
-                  <% } %>
-                <% } %>
 
-          <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
-            <div class="modal-dialog modal-lg">
-              <div class="modal-content">
+          
                 <div align="center" class="mt-4">
                   <canvas id="myCanvas" width="500" height="200" style="border:2px solid black"></canvas>
                   <br /><br />
@@ -99,9 +57,7 @@
                   </select>
                 </div>
                 <button type="submit" class="btn btn-primary mt-4" onclick="sendSignature()">Signer</button>
-              </div>
-            </div>
-          </div>
+
           </main>
         </div>
       </div>

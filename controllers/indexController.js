@@ -149,16 +149,16 @@ controller.generer = async (req, res) => {
       for (let index = nbApprenantsDansPDF; index < nbApprenants; index++) {
         htm +=   '<tr style="height:50px;">'
         htm +=      '<td style="border: 1px solid black; font-size: 10px;"><strong>' + Object.values(formation.contenu.apprenants)[index].nom.slice(+1, -1) + '</strong></td>' 
-        htm +=       '<td style="border: 1px solid black;"><img src="data:image/png;base64,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" height="50px" width="max-content" alt="signature"></img> </td>'
-        htm +=       '<td style="border: 1px solid black;"> </td>'
-        htm +=       '<td style="border: 1px solid black;"> </td>'
-        htm +=       '<td style="border: 1px solid black;"> </td>'
-        htm +=       '<td style="border: 1px solid black;"> </td>'
-        htm +=       '<td style="border: 1px solid black;"> </td>'
-        htm +=       '<td style="border: 1px solid black;"> </td>'
-        htm +=       '<td style="border: 1px solid black;"> </td>'
-        htm +=       '<td style="border: 1px solid black;"> </td>'
-        htm +=       '<td style="border: 1px solid black;"> </td>'
+        htm +=       '<td style="border: 1px solid black;"><img src="' + Object.values(formation.contenu.apprenants)[index].lundiMatin + '" height="50px" width="100px"></img> </td>'
+        htm +=       '<td style="border: 1px solid black;"><img src="' + Object.values(formation.contenu.apprenants)[index].lundiAprem + '" height="50px" width="100px"></img> </td>'
+        htm +=       '<td style="border: 1px solid black;"><img src="' + Object.values(formation.contenu.apprenants)[index].mardiMatin + '" height="50px" width="100px"></img> </td>'
+        htm +=       '<td style="border: 1px solid black;"><img src="' + Object.values(formation.contenu.apprenants)[index].mardiAprem + '" height="50px" width="100px"></img> </td>'
+        htm +=       '<td style="border: 1px solid black;"><img src="' + Object.values(formation.contenu.apprenants)[index].mercrediMatin + '" height="50px" width="100px"></img> </td>'
+        htm +=       '<td style="border: 1px solid black;"><img src="' + Object.values(formation.contenu.apprenants)[index].mercrediAprem + '" height="50px" width="100px"></img> </td>'
+        htm +=       '<td style="border: 1px solid black;"><img src="' + Object.values(formation.contenu.apprenants)[index].jeudiMatin + '" height="50px" width="100px"></img> </td>'
+        htm +=       '<td style="border: 1px solid black;"><img src="' + Object.values(formation.contenu.apprenants)[index].jeudiAprem + '" height="50px" width="100px"></img> </td>'
+        htm +=       '<td style="border: 1px solid black;"><img src="' + Object.values(formation.contenu.apprenants)[index].vendrediMatin + '" height="50px" width="100px"></img> </td>'
+        htm +=       '<td style="border: 1px solid black;"><img src="' + Object.values(formation.contenu.apprenants)[index].vendrediAprem + '" height="50px" width="100px"></img> </td>'
         
         htm +=   '</tr>'
         
@@ -360,16 +360,16 @@ controller.ajouterFormation = async (req, res) => {
             apprenants[nb] = 
             { 
               nom: JSON.stringify(element.content.$t),
-              "lundi matin": false,
-              "lundi aprem": false,
-              "mardi matin": false,
-              "mardi aprem": false,
-              "mercredi matin": false,
-              "mercredi aprem": false,
-              "jeudi matin": false,
-              "jeudi aprem": false,
-              "vendredi matin": false,
-              "vendredi aprem": false        
+              lundiMatin: "",
+              lundiAprem: "",
+              mardiMatin: "",
+              mardiAprem: "",
+              mercrediMatin: "",
+              mercrediAprem: "",
+              jeudiMatin: "",
+              jeudiAprem: "",
+              vendrediMatin: "",
+              vendrediAprem: ""         
             }
             nb++
           }
@@ -438,16 +438,16 @@ controller.synchro = async (req, res) => {
             apprenants[nb] = 
             { 
               nom: JSON.stringify(element.content.$t),
-              "lundi matin": false,
-              "lundi aprem": false,
-              "mardi matin": false,
-              "mardi aprem": false,
-              "mercredi matin": false,
-              "mercredi aprem": false,
-              "jeudi matin": false,
-              "jeudi aprem": false,
-              "vendredi matin": false,
-              "vendredi aprem": false        
+              lundiMatin: "",
+              lundiAprem: "",
+              mardiMatin: "",
+              mardiAprem: "",
+              mercrediMatin: "",
+              mercrediAprem: "",
+              jeudiMatin: "",
+              jeudiAprem: "",
+              vendrediMatin: "",
+              vendrediAprem: ""        
             }
             nb++
           }
@@ -490,12 +490,80 @@ controller.signer = async (req, res) => {
   posApprenant = getKeyByValue(formations[0].contenu.apprenants, Object.values(monObject).find(apprenant => apprenant.nom === '"LEMOINE Thomas"'))
   console.log(posApprenant)
   //console.log(formations[0].contenu.apprenants);
+  console.log(req.body.signature)
+  console.log(req.body.jour)
+  //formations[0].contenu.apprenants[posApprenant].lundiAprem = req.body.signature
+  switch (req.body.jour) {
+    case 'lundiM':
+        formations[0].contenu.apprenants[posApprenant].lundiMatin = req.body.signature
+        break;
+    case 'lundiA':
+        formations[0].contenu.apprenants[posApprenant].lundiAprem = req.body.signature
+        break;
+    case 'mardiM':
+        formations[0].contenu.apprenants[posApprenant].mardiMatin = req.body.signature
+        break;
+    case 'mardiA':
+        formations[0].contenu.apprenants[posApprenant].mardiAprem = req.body.signature
+        break;
+    case 'mercrediM':
+        formations[0].contenu.apprenants[posApprenant].mercrediMatin = req.body.signature
+      break;
+    case 'mercrediA':
+        formations[0].contenu.apprenants[posApprenant].mercrediAprem = req.body.signature
+      break;
+    case 'jeudiM':
+        formations[0].contenu.apprenants[posApprenant].jeudiMatin = req.body.signature
+        break;
+    case 'jeudiA':
+        formations[0].contenu.apprenants[posApprenant].jeudiAprem = req.body.signature
+        break;
+    case 'vendrediM':
+        formations[0].contenu.apprenants[posApprenant].vendrediMatin = req.body.signature
+        break;
+    case 'vendrediA':
+        formations[0].contenu.apprenants[posApprenant].vendrediAprem = req.body.signature
+        break;
+    default:
+      console.log(`Sorry, we are out of ${req.body.jour}.`);
+  }
+  console.log(formations[0].contenu.apprenants[posApprenant])
 
-  //formations[0].contenu.apprenants[posApprenant].lundiAprem = 
+  await Formations.updateOne({nom: formations[0].nom},{ contenu: formations[0].contenu})
   function getKeyByValue(object, value) { 
     return Object.keys(object).find(key =>  
             object[key] === value); 
-} 
+  } 
+}
+
+
+controller.createLink = async (req, res) => {
+  var formations = await Formations.find({})
+  res.render('./createLink.ejs', {
+    title: "Create Link",
+    formations: formations
+  })
+}
+
+controller.createLinkApprenant = async (req, res) => {
+  var formations = await Formations.find({})
+  var apprenant = req.body.apprenants.replace(' ', '-')
+  var jour = req.body.jours.replace(' ', '-')
+  console.log(req.body)
+  link = "http://" + "localhost:3000/" + "signature" + "?apprenant=" + apprenant + "&jour=" + jour
+  res.render('./createLink.ejs', {
+    title: "Create Link",
+    formations: formations,
+    link: link
+  })
+}
+
+controller.signature = async (req, res) => {
+  var formations = await Formations.find({})
+  res.render('./signature.ejs', {
+    title: "Signature",
+    formations: formations
+  })
 }
 
 module.exports = controller;

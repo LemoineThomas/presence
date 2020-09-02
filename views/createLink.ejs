@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Dashboard - Feuille de présence</title>
+    <link rel='stylesheet' href='/presence/stylesheets/style.css' />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+  </head>
+  <body>
+
+      <nav class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0">
+        <a class="navbar-brand col-sm-3 col-md-2 mr-0" href="#">Feuille de présence</a>
+        <ul class="navbar-nav px-3">
+          <li class="nav-item text-nowrap">
+            <a class="nav-link" href="/">Déconnecter</a>
+          </li>
+        </ul>
+      </nav>
+  
+      <div class="container-fluid">
+        <div class="row">
+          <nav class="col-md-2 d-none d-md-block bg-light sidebar">
+            <div class="sidebar-sticky">
+              <ul class="nav flex-column">
+                <li class="nav-item">
+                  <a class="nav-link active" href="/dashboard/">
+                    <span data-feather="home"></span>
+                    Générer/Synchro PDF 
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link active" href="/ajouter/">
+                    <span data-feather="home"></span>
+                    Ajouter une formation 
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link active" href="/createLink/">
+                    <span data-feather="home"></span>
+                    Créer un lien <span class="sr-only">(current)</span>
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </nav>
+  
+          <main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
+            <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-3 border-bottom">
+              <h1>Créer un lien</h1>
+            </div>
+
+            <form action="/createLink" method="POST">
+                <div class="form-group">
+                  <label for="exampleFormControlSelect1">Formation</label>
+                  <select class="form-control" id="formations" name="formation">
+                    <%  formations.forEach(element => { %>
+                      <option><%= element.nom %></option>
+                     <% }) %>
+                  </select>
+                </div>
+                <div class="form-group">
+                    <label for="exampleFormControlSelect1">Apprenants</label>
+                    <select  onchange="afficherJour()" class="form-control" id="apprenants" name="apprenants">
+                      <%  Object.values(formations[0].contenu.apprenants).forEach(element => { %>
+                        <option><%= element.nom %></option>
+                        <!--.slice(+1, -1)-->
+                       <% }) %>
+                    </select>
+                </div>
+                
+                <div id="jour" class="form-group">
+                </div>
+                <button type="submit" class="btn btn-primary">Créer le lien</button>
+            </form>
+              <% if(typeof link !== 'undefined'){ %>
+                <%= link %> 
+              <% } %>  
+          </main>
+        </div>
+      </div>
+    <script>
+        function findWithAttr(array, attr, value) {
+            for(var i = 0; i < array.length; i += 1) {
+                if(array[i][attr] === value) {
+                    return i;
+                }
+            }
+            return -1;
+        }
+        
+        
+        
+        document.getElementById("apprenants").addEventListener('change', afficherJour());
+        function afficherJour(){
+          var formations = <%- JSON.stringify(formations) %>;
+            var posApprenant = findWithAttr(Object.values(formations[0].contenu.apprenants), 'nom', document.getElementById('apprenants').value);
+            htm = '<label for="exampleFormControlSelect1">Jour</label>'
+            htm += '<select class="form-control" id="jours" name="jours">'
+            if(formations[0].contenu.apprenants[posApprenant].lundiMatin == ""){
+              htm += '<option>Lundi Matin</option>'
+            }
+            if(formations[0].contenu.apprenants[posApprenant].lundiAprem == ""){
+              htm += '<option>Lundi Aprem</option>'
+            }
+            if(formations[0].contenu.apprenants[posApprenant].mardiMatin == ""){
+              htm += '<option>Mardi Matin</option>'
+            }
+            if(formations[0].contenu.apprenants[posApprenant].mardiAprem == ""){
+              htm += '<option>Mardi Aprem</option>'
+            }
+            if(formations[0].contenu.apprenants[posApprenant].mercrediMatin == ""){
+              htm += '<option>Mercredi Matin</option>'
+            }
+            if(formations[0].contenu.apprenants[posApprenant].mercrediAprem == ""){
+              htm += '<option>Mercredi Aprem</option>'
+            }
+            if(formations[0].contenu.apprenants[posApprenant].jeudiMatin == ""){
+              htm += '<option>Jeudi Matin</option>'
+            }
+            if(formations[0].contenu.apprenants[posApprenant].jeudiAprem == ""){
+              htm += '<option>Jeudi Aprem</option>'
+            }
+            if(formations[0].contenu.apprenants[posApprenant].vendrediMatin == ""){
+              htm += '<option>Vendredi Matin</option>'
+            }
+            if(formations[0].contenu.apprenants[posApprenant].vendrediAprem == ""){
+              htm += '<option>Vendredi Aprem</option>'
+            }
+            htm += '</select>'
+            document.getElementById("jour").innerHTML = htm
+        }
+
+
+    </script>
+  </body>
+</html>

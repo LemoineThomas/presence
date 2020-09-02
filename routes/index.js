@@ -20,5 +20,8 @@ router.get('/ajouter', indexController.ajouter);
 router.post('/ajouterFormation', indexController.ajouterFormation);
 router.post('/synchro', indexController.synchro);
 router.post('/signer', indexController.signer);
+router.get('/createLink', indexController.createLink);
+router.post('/createLink', indexController.createLinkApprenant);
+router.get('/signature', indexController.signature);
 
 module.exports = router;

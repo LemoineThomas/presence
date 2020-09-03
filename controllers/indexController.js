@@ -4,6 +4,7 @@ const Formations = require("../models/formations");
 const Users = require("../models/users");
 const Signer = require("../models/signer");
 const validator = require('validator');
+const qr = require("qrcode");
 
 var express     = require("express"),
 fs              = require('fs'),
@@ -553,14 +554,21 @@ controller.createLinkApprenant = async (req, res) => {
   link = "http://" + "localhost:3000/" + "signature" + "?apprenant=" + apprenant + "&jour=" + jour
   var posApprenant = findWithAttr(Object.values(formations[0].contenu.apprenants), 'nom', req.body.apprenants);
   var posJour = findWithAttr(Object.values(formations[0].contenu.apprenants[posApprenant].liens), 'nom', req.body.jours);
-  formations[0].contenu.apprenants[posApprenant].liens[posJour].lien = link
-  formations[0].contenu.apprenants[posApprenant].liens[posJour].created = Date.now()
-  await Formations.updateOne({nom: formations[0].nom},{ contenu: formations[0].contenu})
-  res.render('./createLink.ejs', {
-    title: "Create Link",
-    formations: formations,
-    link: link
-  })
+  
+
+
+  qr.toDataURL(link, async (err, src)=> {
+    var qrcode = src
+    formations[0].contenu.apprenants[posApprenant].liens[posJour].lien = qrcode
+    formations[0].contenu.apprenants[posApprenant].liens[posJour].created = Date.now()
+    await Formations.updateOne({nom: formations[0].nom},{ contenu: formations[0].contenu})
+    res.render('./createLink.ejs', {
+      title: "Create Link",
+      formations: formations,
+      qrcode: qrcode
+    })
+  });
+  
 
   function findWithAttr(array, attr, value) {
     for(var i = 0; i < array.length; i += 1) {
@@ -574,9 +582,20 @@ controller.createLinkApprenant = async (req, res) => {
 
 controller.signature = async (req, res) => {
   var formations = await Formations.find({})
+  console.log(req.query)
+  console.log(req.session.user)
+
+  if((req.session.user.nom + "-" + req.session.user.prenom) == "test-test"){
+    console.log("Vous pouvez signer")
+    var signer = true
+  }else{
+    console.log("Vous ne pouvez pas signer")
+    var signer = false
+  }
   res.render('./signature.ejs', {
     title: "Signature",
-    formations: formations
+    formations: formations,
+    signer : signer
   })
 }
 

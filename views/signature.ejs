@@ -42,22 +42,24 @@
               <h1>Signer le PDF</h1>
             </div>
 
-          
-                <div align="center" class="mt-4">
-                  <canvas id="myCanvas" width="500" height="200" style="border:2px solid black"></canvas>
-                  <br /><br />
-                  <button class="btn btn-primary" onclick="javascript:clearArea();return false;">Tout effacer</button>
-                  Épaisseur : <select id="selWidth">
-                      <option value="1">1</option>
-                      <option value="3" selected="selected">3</option>
-                      <option value="5">5</option>
-                  </select>
-                  Couleur : <select id="selColor">
-                      <option value="black" selected="selected">black</option>
-                  </select>
-                </div>
-                <button type="submit" class="btn btn-primary mt-4" onclick="sendSignature()">Signer</button>
-
+            <% if(signer) {%> 
+            <div align="center" class="mt-4">
+              <canvas id="myCanvas" width="500" height="200" style="border:2px solid black"></canvas>
+              <br /><br />
+              <button class="btn btn-primary" onclick="javascript:clearArea();return false;">Tout effacer</button>
+              Épaisseur : <select id="selWidth">
+                  <option value="1">1</option>
+                  <option value="3" selected="selected">3</option>
+                  <option value="5">5</option>
+              </select>
+              Couleur : <select id="selColor">
+                  <option value="black" selected="selected">black</option>
+              </select>
+            </div>
+            <button type="submit" class="btn btn-primary mt-4" onclick="sendSignature()">Signer</button>
+            <% }else{ %>
+              <p>Vous n'êtes pas autorisé à signer pour cette personne.</p>
+            <% } %> 
           </main>
         </div>
       </div>

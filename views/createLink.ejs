@@ -71,8 +71,8 @@
                 </div>
                 <button type="submit" class="btn btn-primary">Créer le lien</button>
             </form>
-              <% if(typeof link !== 'undefined'){ %>
-                <a href="<%= link %> " target="_blank"><%= link %></a>
+              <% if(typeof qrcode !== 'undefined'){ %>
+                <img src="<%= qrcode %> "/>
                 
               <% } %>  
           </main>

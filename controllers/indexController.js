@@ -551,7 +551,9 @@ controller.createLinkApprenant = async (req, res) => {
   var apprenant = req.body.apprenants.replace(' ', '-')
   var jour = req.body.jours.replace(' ', '-')
   console.log(req.body)
-  link = "http://" + "localhost:3000/" + "signature" + "?apprenant=" + apprenant + "&jour=" + jour
+  token = Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15)
+  console.log(token)
+  link = "http://" + "localhost:3000/" + "signature" + "?apprenant=" + apprenant + "&jour=" + jour + "&token=" + token
   var posApprenant = findWithAttr(Object.values(formations[0].contenu.apprenants), 'nom', req.body.apprenants);
   var posJour = findWithAttr(Object.values(formations[0].contenu.apprenants[posApprenant].liens), 'nom', req.body.jours);
   
@@ -559,9 +561,11 @@ controller.createLinkApprenant = async (req, res) => {
 
   qr.toDataURL(link, async (err, src)=> {
     var qrcode = src
+    formations[0].contenu.apprenants[posApprenant].liens[posJour].token = token
     formations[0].contenu.apprenants[posApprenant].liens[posJour].lien = qrcode
     formations[0].contenu.apprenants[posApprenant].liens[posJour].created = Date.now()
     await Formations.updateOne({nom: formations[0].nom},{ contenu: formations[0].contenu})
+    
     res.render('./createLink.ejs', {
       title: "Create Link",
       formations: formations,
@@ -584,8 +588,9 @@ controller.signature = async (req, res) => {
   var formations = await Formations.find({})
   console.log(req.query)
   console.log(req.session.user)
+  console.log(req.query.token)
 
-  if((req.session.user.nom + "-" + req.session.user.prenom) == "test-test"){
+  if((req.query.token) == "pw0w4rd6brbfhsgl7j7vpf"){
     console.log("Vous pouvez signer")
     var signer = true
   }else{

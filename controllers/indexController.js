@@ -586,11 +586,16 @@ controller.createLinkApprenant = async (req, res) => {
 
 controller.signature = async (req, res) => {
   var formations = await Formations.find({})
-  console.log(req.query)
-  console.log(req.session.user)
-  console.log(req.query.token)
 
-  if((req.query.token) == "pw0w4rd6brbfhsgl7j7vpf"){
+  var apprenant = req.query.apprenant.replace('-', ' ')
+  var jour = req.query.jour.replace('-', '')
+  
+  var posApprenant = findWithAttr(Object.values(formations[0].contenu.apprenants), 'nom', '"' + req.session.user.nom.toUpperCase() + " " + req.session.user.prenom + '"');
+  var posJour = findWithAttr(Object.values(formations[0].contenu.apprenants[posApprenant].liens), 'nom', lowercaseFirstLetter(jour));
+  
+  var token = formations[0].contenu.apprenants[posApprenant].liens[posJour].token
+  
+  if((req.query.token) == token){
     console.log("Vous pouvez signer")
     var signer = true
   }else{
@@ -602,6 +607,18 @@ controller.signature = async (req, res) => {
     formations: formations,
     signer : signer
   })
+
+  function findWithAttr(array, attr, value) {
+    for(var i = 0; i < array.length; i += 1) {
+        if(array[i][attr] === value) {
+            return i;
+        }
+    }
+    return -1;
+  }
+  function lowercaseFirstLetter(string) {
+    return string.charAt(0).toLowerCase() + string.slice(1);
+  }
 }
 
 module.exports = controller;

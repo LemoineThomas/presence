@@ -610,9 +610,9 @@ controller.synchro = async (req, res) => {
 controller.signer = async (req, res) => {
   var formations = await Formations.find({})
   monObject = formations[0].contenu.apprenants;
-  console.log(Object.values(monObject).find(apprenant => apprenant.nom === '"LEMOINE Thomas"'))
-
-  posApprenant = getKeyByValue(formations[0].contenu.apprenants, Object.values(monObject).find(apprenant => apprenant.nom === '"LEMOINE Thomas"'))
+  console.log(Object.values(monObject).find(apprenant => apprenant.nom === '"' + req.session.user.nom + ' ' + req.session.user.prenom + '"'))
+  
+  posApprenant = findWithAttr(formations[0].contenu.apprenants, 'nom', '"' + req.session.user.nom + ' ' + req.session.user.prenom + '"')
   console.log(posApprenant)
   //console.log(formations[0].contenu.apprenants);
   console.log(req.body.signature)
@@ -649,6 +649,36 @@ controller.signer = async (req, res) => {
     case 'vendrediA':
         formations[0].contenu.apprenants[posApprenant].vendrediAprem = req.body.signature
         break;
+        case 'Lundi Matin':
+          formations[0].contenu.apprenants[posApprenant].lundiMatin = req.body.signature
+          break;
+      case 'Lundi Aprem':
+          formations[0].contenu.apprenants[posApprenant].lundiAprem = req.body.signature
+          break;
+      case 'Mardi Matin':
+          formations[0].contenu.apprenants[posApprenant].mardiMatin = req.body.signature
+          break;
+      case 'Mardi Aprem':
+          formations[0].contenu.apprenants[posApprenant].mardiAprem = req.body.signature
+          break;
+      case 'Mercredi Matin':
+          formations[0].contenu.apprenants[posApprenant].mercrediMatin = req.body.signature
+        break;
+      case 'Mercredi Aprem':
+          formations[0].contenu.apprenants[posApprenant].mercrediAprem = req.body.signature
+        break;
+      case 'Jeudi Matin':
+          formations[0].contenu.apprenants[posApprenant].jeudiMatin = req.body.signature
+          break;
+      case 'Jeudi Aprem':
+          formations[0].contenu.apprenants[posApprenant].jeudiAprem = req.body.signature
+          break;
+      case 'Vendredi Matin':
+          formations[0].contenu.apprenants[posApprenant].vendrediMatin = req.body.signature
+          break;
+      case 'Vendredi Aprem':
+          formations[0].contenu.apprenants[posApprenant].vendrediAprem = req.body.signature
+          break;
     default:
       console.log(`Sorry, we are out of ${req.body.jour}.`);
   }
@@ -659,6 +689,14 @@ controller.signer = async (req, res) => {
     return Object.keys(object).find(key =>  
             object[key] === value); 
   } 
+  function findWithAttr(array, attr, value) {
+    for(var i = 0; i < array.length; i += 1) {
+        if(array[i][attr] === value) {
+            return i;
+        }
+    }
+    return -1;
+  }
 }
 
 
@@ -738,7 +776,8 @@ controller.signature = async (req, res) => {
     title: "Signature",
     formations: formations,
     signer : signer,
-    temps: temps
+    temps: temps,
+    jour: jour
   })
 
   function findWithAttr(array, attr, value) {

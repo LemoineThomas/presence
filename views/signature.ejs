@@ -44,6 +44,7 @@
             </div>
 
             <% if(signer && temps) {%> 
+            <input style="display: none;" id="jour" value="<%= jour %>"/>
             <div align="center" class="mt-4">
               <canvas id="myCanvas" width="500" height="200" style="border:2px solid black"></canvas>
               <br /><br />
@@ -122,6 +123,7 @@
           _data.signature = dataURL;
           _data.jour = jour;
           console.log(_data);
+          console.log(jour)
           // Make an Ajax request
           $.post('/signer', _data, function(result) {
             console.log('result', result);

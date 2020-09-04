@@ -715,7 +715,7 @@ controller.signature = async (req, res) => {
   var jour = req.query.jour.replace('-', '')
   
   //donne les positions dans la bdd
-  var posApprenant = findWithAttr(Object.values(formations[0].contenu.apprenants), 'nom', '"' + req.session.user.nom.toUpperCase() + " " + req.session.user.prenom + '"');
+  var posApprenant = findWithAttr(Object.values(formations[0].contenu.apprenants), 'nom', apprenant);
   var posJour = findWithAttr(Object.values(formations[0].contenu.apprenants[posApprenant].liens), 'nom', lowercaseFirstLetter(jour));
   
   var token = formations[0].contenu.apprenants[posApprenant].liens[posJour].token

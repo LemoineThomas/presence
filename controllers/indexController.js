@@ -370,7 +370,69 @@ controller.ajouterFormation = async (req, res) => {
               jeudiMatin: "",
               jeudiAprem: "",
               vendrediMatin: "",
-              vendrediAprem: ""         
+              vendrediAprem: "",
+              liens: [
+                {
+                  lien: "",
+                  created: "",
+                  nom: "lundiMatin",
+                  token: ""
+                },
+                {
+                  lien: "",
+                  created: "",
+                  nom: "lundiAprem",
+                  token: ""
+                },
+                {
+                  lien: "",
+                  created: "",
+                  nom: "mardiMatin",
+                  token: ""
+                },
+                {
+                  lien: "",
+                  created: "",
+                  nom: "mardiAprem",
+                  token: ""
+                },
+                {
+                  lien: "",
+                  created: "",
+                  nom: "mercrediMatin",
+                  token: ""
+                },
+                {
+                  lien: "",
+                  created: "",
+                  nom: "mercrediAprem",
+                  token: ""
+                },
+                {
+                  lien: "",
+                  created: "",
+                  nom: "jeudiMatin",
+                  token: ""
+                },
+                {
+                  lien: "",
+                  created: "",
+                  nom: "jeudiAprem",
+                  token: ""
+                },
+                {
+                  lien: "",
+                  created: "",
+                  nom: "vendrediMatin",
+                  token: ""
+                },
+                {
+                  lien: "",
+                  created: "",
+                  nom: "vendrediAprem",
+                  token: ""
+                }
+              ]
             }
             nb++
           }
@@ -448,7 +510,69 @@ controller.synchro = async (req, res) => {
               jeudiMatin: "",
               jeudiAprem: "",
               vendrediMatin: "",
-              vendrediAprem: ""        
+              vendrediAprem: "",
+              liens: [
+                {
+                  lien: "",
+                  created: "",
+                  nom: "lundiMatin",
+                  token: ""
+                },
+                {
+                  lien: "",
+                  created: "",
+                  nom: "lundiAprem",
+                  token: ""
+                },
+                {
+                  lien: "",
+                  created: "",
+                  nom: "mardiMatin",
+                  token: ""
+                },
+                {
+                  lien: "",
+                  created: "",
+                  nom: "mardiAprem",
+                  token: ""
+                },
+                {
+                  lien: "",
+                  created: "",
+                  nom: "mercrediMatin",
+                  token: ""
+                },
+                {
+                  lien: "",
+                  created: "",
+                  nom: "mercrediAprem",
+                  token: ""
+                },
+                {
+                  lien: "",
+                  created: "",
+                  nom: "jeudiMatin",
+                  token: ""
+                },
+                {
+                  lien: "",
+                  created: "",
+                  nom: "jeudiAprem",
+                  token: ""
+                },
+                {
+                  lien: "",
+                  created: "",
+                  nom: "vendrediMatin",
+                  token: ""
+                },
+                {
+                  lien: "",
+                  created: "",
+                  nom: "vendrediAprem",
+                  token: ""
+                }
+              ]        
             }
             nb++
           }

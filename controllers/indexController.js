@@ -595,7 +595,14 @@ controller.signature = async (req, res) => {
   var posJour = findWithAttr(Object.values(formations[0].contenu.apprenants[posApprenant].liens), 'nom', lowercaseFirstLetter(jour));
   
   var token = formations[0].contenu.apprenants[posApprenant].liens[posJour].token
-  
+  var temps = formations[0].contenu.apprenants[posApprenant].liens[posJour].created  + (4*60*60*1000)
+  if(temps < Date.now()){
+    console.log("trop tard")
+    temps = false
+  }else{
+    console.log("ca passe")
+    temps = true
+  }
   if((req.query.token) == token){
     console.log("Vous pouvez signer")
     var signer = true
@@ -606,7 +613,8 @@ controller.signature = async (req, res) => {
   res.render('./signature.ejs', {
     title: "Signature",
     formations: formations,
-    signer : signer
+    signer : signer,
+    temps: temps
   })
 
   function findWithAttr(array, attr, value) {
